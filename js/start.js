@@ -76,7 +76,7 @@ const main = (player1, player2) => {
 
 
 			let playertab = [player1, player2];
-			console.log(playertab);
+			//console.log(playertab);
 
 			if (playertab[_player].hearts != oldHPTab[_player]) {
 
