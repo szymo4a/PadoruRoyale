@@ -87,12 +87,12 @@ body {
 
 #playerInfoIMG1 {
 	float: left;
-	background-image: url("../media/PadoruR.png");
+	background-image: url("../media/padoruR.png");
 }
 
 #playerInfoIMG2 {
 	float: right;
-	background-image: url("../media/PadoruG.png");
+	background-image: url("../media/padoruG.png");
 	transform: scaleX(-1);
 	filter: FlipH;
 }
