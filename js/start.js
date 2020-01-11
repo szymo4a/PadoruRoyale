@@ -151,7 +151,7 @@ const main = (player1, player2) => {
 			}
 			updateInterface(0);
 			updateInterface(1);
-		 }, 3000);
+		 }, 1500);
 	//
 
 	// Sterowanie
