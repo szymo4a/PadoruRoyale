@@ -242,7 +242,7 @@ jump() {
 boostManagement() {
 
 	//console.log(`Player boost: ${this.boost}, fuel: ${this.boostFuel}`);
-	if (this.isBoostPressed) {
+	if (this.isBoostPressed && (this.totalSpeed[0] || this.totalSpeed[1])) {
 
 		if (this.boostFuel > 0) {
 

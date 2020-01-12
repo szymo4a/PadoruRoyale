@@ -1,8 +1,7 @@
 let scene = new THREE.Scene();
-let camera  = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-let camera2 = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+let camera  = new THREE.PerspectiveCamera(75, window.innerWidth / ((window.innerWidth*8) /16), 0.1, 1000);
 let renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setSize(window.innerWidth *1, window.innerHeight *0.99);
+renderer.setSize(window.innerWidth *1, window.innerHeight *1);
 document.body.appendChild(renderer.domElement);
 renderer.setClearColor ( 'cornflowerblue', 1.0 );
 renderer.shadowMapEnabled = true;
@@ -23,7 +22,7 @@ const resize = () => {
 	requestAnimationFrame(resize);
 	let help = 0;
 	help = (window.innerWidth*8) /16;
-	renderer.setSize(window.innerWidth *1, help *0.99);
+	renderer.setSize(window.innerWidth *1, help *1);
 	renderer.render(scene, camera);
 }
 resize();
@@ -151,7 +150,7 @@ const main = (player1, player2) => {
 			}
 			updateInterface(0);
 			updateInterface(1);
-		 }, 1500);
+		 }, 1100);
 	//
 
 	// Sterowanie
@@ -519,11 +518,11 @@ const main = (player1, player2) => {
 
 				       if (currentPresents <  (maxPresents/3)) {
 
-					presentChance = Math.floor(Math.random()*2);
+					presentChance = Math.floor((Math.random()*3)/2);
 
 				} else if (currentPresents <  (maxPresents/2)) {
 
-					presentChance = Math.floor(Math.random()*3);
+					presentChance = Math.floor(Math.random()*2);
 
 				} else  if (currentPresents <  (2 * maxPresents/3)){
 
@@ -827,6 +826,8 @@ const main = (player1, player2) => {
 		loser.Group.rotation.x = Math.PI / 2;
     	loser.Group.position.y += -0.6;
     	loser.Group.position.x += -0.5;
+
+    	document.querySelector("#restartButton").style.visibility = "visible";
 	}
 
 
