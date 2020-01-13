@@ -1,5 +1,5 @@
 // Dopasowywanie rozmiaru renderera i kamery
-	let myWidth = window.innerWidth;
+	let myWidth  = window.innerWidth;
 	let myHeight = window.innerHeight;
 	if ((myWidth*8)/16 <= myHeight) {
 		myHeight = (myWidth*8)/16;
@@ -12,6 +12,7 @@ let scene = new THREE.Scene();
 let camera  = new THREE.PerspectiveCamera(75, myWidth / myHeight, 0.1, 1000);
 let renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(myWidth, myHeight);
+
 document.body.appendChild(renderer.domElement);
 renderer.setClearColor ( 'cornflowerblue', 1.0 );
 renderer.shadowMapEnabled = true;
@@ -30,7 +31,7 @@ scene.add(myAbientLight);
 
 const resize = () => {
 	requestAnimationFrame(resize);
-		myWidth = window.innerWidth;
+		myWidth  = window.innerWidth;
 		myHeight = window.innerHeight;
 		if ((myWidth*8)/16 <= myHeight) {
 			myHeight = (myWidth*8)/16;
@@ -173,13 +174,13 @@ const main = (player1, player2) => {
 		//https://www.cambiaresearch.com/articles/15/javascript-char-codes-key-codes
 
 		player1.setKeys(
-				"W".charCodeAt(0)
-			,	"S".charCodeAt(0)
-			,	"A".charCodeAt(0)
+				"E".charCodeAt(0)
 			,	"D".charCodeAt(0)
+			,	"S".charCodeAt(0)
+			,	"F".charCodeAt(0)
 			,	16	// Shift		// Boost
-			,	"G".charCodeAt(0)	// Skok
-			,	"F".charCodeAt(0)	// Sniezka
+			,	"J".charCodeAt(0)	// Skok
+			,	"H".charCodeAt(0)	// Sniezka
 			)
 
 		player2.setKeys(
@@ -914,7 +915,7 @@ const main = (player1, player2) => {
 		    			}
 	    			}
 	    		}
-	    		
+
 	    		}
     		} else {
 
@@ -1009,7 +1010,7 @@ const menuFunc = () => {
 	let snowTopXTexture = new MyTexture(`snow.jpg`, floorSideX*3/2, floorSideZ*3/2);
 	let snowTopZTexture = new MyTexture(`snow.jpg`, floorSideX/2,   floorSideZ/2);
 
-	sterText = new MyTexture(`sterowanie3.png`, 1, 1);
+	sterText = new MyTexture(`sterowanie.png`, 1, 1);
 
 	{
 			let numOfObjLoaded = 0;
@@ -1198,4 +1199,10 @@ window.addEventListener("keydown",function (e) {
     if (e.ctrlKey && !(e.ctrlKey && e.keyCode === 116)) { 	// 116 - F5
         e.preventDefault();
     }
-})
+});
+window.onbeforeunload = function (e) {
+    if (e.ctrlKey && !(e.ctrlKey && e.keyCode === 116)) { 	// 116 - F5
+        e.preventDefault();
+    e.returnValue = 'Really want to quit the game?';
+    }
+};
