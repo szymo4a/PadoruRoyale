@@ -1,7 +1,17 @@
+// Dopasowywanie rozmiaru renderera i kamery
+	let myWidth = window.innerWidth;
+	let myHeight = window.innerHeight;
+	if ((myWidth*8)/16 <= myHeight) {
+		myHeight = (myWidth*8)/16;
+	} else {
+		myWidth = (myHeight*16)/8;
+	}
+//
+
 let scene = new THREE.Scene();
-let camera  = new THREE.PerspectiveCamera(75, window.innerWidth / ((window.innerWidth*8) /16), 0.1, 1000);
+let camera  = new THREE.PerspectiveCamera(75, myWidth / myHeight, 0.1, 1000);
 let renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setSize(window.innerWidth *1, window.innerHeight *1);
+renderer.setSize(myWidth, myHeight);
 document.body.appendChild(renderer.domElement);
 renderer.setClearColor ( 'cornflowerblue', 1.0 );
 renderer.shadowMapEnabled = true;
@@ -20,9 +30,14 @@ scene.add(myAbientLight);
 
 const resize = () => {
 	requestAnimationFrame(resize);
-	let help = 0;
-	help = (window.innerWidth*8) /16;
-	renderer.setSize(window.innerWidth *1, help *1);
+		myWidth = window.innerWidth;
+		myHeight = window.innerHeight;
+		if ((myWidth*8)/16 <= myHeight) {
+			myHeight = (myWidth*8)/16;
+		} else {
+			myWidth = (myHeight*16)/8;
+		}
+	renderer.setSize(myWidth, myHeight);
 	renderer.render(scene, camera);
 }
 resize();
@@ -862,7 +877,6 @@ const main = (player1, player2) => {
 		    		borderCollision(player1);
 		    		player2.move();
 		    		borderCollision(player2);
-	    		}
 
 				for(let i = 0; i < player1Snowballs.length; i++) {
 
@@ -899,6 +913,8 @@ const main = (player1, player2) => {
 		    				presentCollision(player2, presentsTab[i]);
 		    			}
 	    			}
+	    		}
+	    		
 	    		}
     		} else {
 
@@ -1176,3 +1192,10 @@ const menuFunc = () => {
 			checkIfLoaded();
  }
 //
+
+// no ctrl+anything for u >:)
+window.addEventListener("keydown",function (e) {
+    if (e.ctrlKey && !(e.ctrlKey && e.keyCode === 116)) { 	// 116 - F5
+        e.preventDefault();
+    }
+})
