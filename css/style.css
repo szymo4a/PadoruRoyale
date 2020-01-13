@@ -4,40 +4,52 @@
 
 body {
   margin: 0;
+  background-color: black;
+}
+
+
+	
+canvas {	/* https://css-tricks.com/quick-css-trick-how-to-center-an-object-exactly-in-the-center/ */
+	z-index: -10;
+  	position: absolute;
+  	top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
 }
 
 #loadingText {
-		position: absolute; 
 		margin: auto; 
 		padding-top: 1.5%;
 		padding-left: 0.5%;
 		z-index: 100; 
 		text-align: center; 
-		top: 44.5%; 
-		left: 44.5%; 
 		font-size: 30px; 
-		width: 10%;
-		height: 10%;
 		font-family: Calibri;
+
+
+		position: fixed;
+  		top: 49%;
+  		left: 50%;
+  		transform: translate(-50%, -50%);
 }
 
 #timerText {
-		position: absolute; 
 		margin: auto; 
 		padding-top: 1.5%;
 		padding-left: 0.5%;
 		z-index: 1000; 
 		text-align: center; 
-		top: 14.5%; 
 		visibility: hidden;
 		color: snow;
-		left: 44.5%; 
 		font-size: 500px; 
-		width: 10%;
-		height: 10%;
 		font-family: Calibri;  
 		text-shadow: black 2px 0px 0px, black 1.75517px 0.95885px 0px, black 1.0806px 1.68294px 0px, black 0.14147px 1.99499px 0px, black -0.83229px 1.81859px 0px, black -1.60229px 1.19694px 0px, black -1.97998px 0.28224px 0px, black -1.87291px -0.70157px 0px, black -1.30729px -1.5136px 0px, black -0.42159px -1.95506px 0px, black 0.56732px -1.91785px 0px, black 1.41734px -1.41108px 0px, black 1.92034px -0.55883px 0px;
 
+
+		position: fixed;
+  		top: 50%;
+  		left: 50%;
+  		transform: translate(-50%, -50%);
 }
 
 #restartButton {
