@@ -88,8 +88,8 @@ loadShield() {
 
 		new THREE.CylinderGeometry( 1, 1, 2.3, 20 ), 
 		new THREE.MeshStandardMaterial({
-			color: 'aqua', 
-			opacity: 0.1, 
+			color: 'blue', 
+			opacity: 0.15, 
 			transparent: true
 		}))
 	this.Group.add(this.shieldCylinder);

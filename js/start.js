@@ -54,6 +54,7 @@ resize();
 	let sterText;
 //
 
+
 const main = (player1, player2) => {
 
 	camera.position.y = 16;
@@ -425,6 +426,7 @@ const main = (player1, player2) => {
 
 		let directionalLight = new THREE.DirectionalLight( 0xffffff, 0.6 );
 		directionalLight.position.z = -floorSideZ*3;
+		directionalLight.intensity = 0.6;
 		directionalLight.position.y = 40;
 		directionalLight.position.x = floorSideX;
 		directionalLight.castShadow = true;
@@ -846,6 +848,43 @@ const main = (player1, player2) => {
     	document.querySelector("#restartButton").style.visibility = "visible";
 	}
 
+	const changeLight = (timeC) => {
+		
+		const ambientStep = myAbientLight.intensity/timeC;
+		const directionalStep = directionalLight.intensity/timeC;
+
+		let newA = myAbientLight.intensity;
+		let newD = directionalLight.intensity;
+
+		let currTime = 0;
+
+		let lightInterval = setInterval(function() {
+
+			newA -= ambientStep;
+			newD -= directionalStep;
+
+			currTime += 1;
+
+			if (typeof myAbientLight != 'undefined') {
+				console.log(myAbientLight.intensity);
+
+				myAbientLight.intensity = newA;
+				directionalLight.intensity = newD;
+			}
+
+			if(currTime >= timeC) {
+
+			if (typeof myAbientLight != 'undefined') {
+				
+				myAbientLight.intensity = 0;
+				directionalLight.intensity = 0;
+			}
+				clearInterval(lightInterval);
+			}
+
+		}, 1);
+
+	}
 
 	let animateTimeoutHelper = 1;
 	const animate = () => {
@@ -860,6 +899,8 @@ const main = (player1, player2) => {
     				player2.Group.rotation.x = Math.PI / 2;
     				player2.Group.position.y = -0.4;
     			}
+
+    			changeLight(3000);
 
     			setTimeout(function(){ 
 
