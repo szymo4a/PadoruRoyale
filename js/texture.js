@@ -10,10 +10,9 @@ constructor (url_, X_, Z_) {
 	this.Z = Z_;
 
 
-	let _this = this;
-	// instantiate a loader
+	let _this = this;  //Because 'this' is not visible
+
 	this.texture = new THREE.TextureLoader().load(
-		// resource URL
 		`textures/${_this.url}`,
 
 		// onLoad callback

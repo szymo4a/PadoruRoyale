@@ -50,7 +50,6 @@ loadObject() {
 	let tempScale = this.scale;
 	loader.load( `objects/padoru/${this.modelSrc}.glb`, function ( gltf ) {
 
-		//console.log(gltf.scene.children[0]);
 	    tempModel = gltf.scene.children[0];
 	    tempModel.name = 'PadoruBody';
 	    tempModel.scale.set (tempScale, tempScale, tempScale);
@@ -74,9 +73,7 @@ loadObject() {
 
 	const tempSet = () => {
 		this.loaded = tempLoaded;
-		//console.log(tempModel);
 		this.padoruModel = tempModel;
-		//this.addToScene();
 		this.Group.add(this.padoruModel);
 	}
 	
@@ -105,7 +102,7 @@ toggleShield() {
 }
 
 shieldAnimation() {
-	let _this = this;
+	let _this = this; //Because 'this' is not visible in setTimeout
 						   _this.shieldCylinder.visible = false;
 	setTimeout(function(){ _this.shieldCylinder.visible = true;  },  250);
 	setTimeout(function(){ _this.shieldCylinder.visible = false; },  500);
@@ -190,7 +187,6 @@ adjustLooking() {
 		this.lookingAt = 1;
 	}
 
-	//console.log(this.lookingAt);
 	this.Group.rotation.y = 2*Math.PI/8 * this.lookingAt;
 }
 
@@ -225,12 +221,9 @@ jump() {
 
 		}
 
-		if (_this.currentHeight <= 0) {
+		if (_this.currentHeight < 0) {
 
 			_this.alreadyJumping = false;
-
-			_this.currentHeight = 0;
-			_this.adjustJumping();
 
 			clearInterval(jumpInterval);
 		}
@@ -241,8 +234,8 @@ jump() {
 
 boostManagement() {
 
-	//console.log(`Player boost: ${this.boost}, fuel: ${this.boostFuel}`);
-	if (this.isBoostPressed && (this.totalSpeed[0] || this.totalSpeed[1])) {
+	//Only use boostMeter when moving 
+	if (this.isBoostPressed && (this.totalSpeed[0] || this.totalSpeed[1])) {	
 
 		if (this.boostFuel > 0) {
 
@@ -292,7 +285,7 @@ takeDamage() {
 }
 
 damageAnimation() {
-	let _this = this;
+	let _this = this; //Because 'this' is not visible in setTimeout
 						   _this.padoruModel.visible = false;
 	setTimeout(function(){ _this.padoruModel.visible = true;  },  50);
 	setTimeout(function(){ _this.padoruModel.visible = false; }, 100);

@@ -20,7 +20,6 @@ loadObject() {
 	let tempScale = this.scale;
 	loader.load( `objects/mc/creeper/creeper.glb`, function ( gltf ) {
 
-		//console.log(gltf.scene.children[0]);
 	    tempModel = gltf.scene.children[0];
 	    tempModel.name = 'CreeperBody';
 	    tempModel.scale.set (tempScale, tempScale, tempScale);
@@ -28,7 +27,7 @@ loadObject() {
 	    tempModel.castShadow = true;
 		tempLoaded = true;
 		
-		gltf.scene.traverse( function( node ) {
+		gltf.scene.traverse( function( node ) { // Make the whole object react with shadows
 
         	if ( node instanceof THREE.Mesh ) { node.castShadow = true; node.receiveShadow = false; }
 
@@ -44,15 +43,11 @@ loadObject() {
 
 	const tempSet = () => {
 		this.loaded = tempLoaded;
-		//console.log(tempModel);
 		this.Model = tempModel;
-		//this.addToScene();
 		this.Group.add(this.Model);
 	}
 	
 }
-
-//this.Group.rotation.y = 2*Math.PI/8 * this.lookingAt;
 
 addToScene() {
 

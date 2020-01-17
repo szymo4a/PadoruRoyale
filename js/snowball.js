@@ -35,7 +35,7 @@ position(x, y, z) {
 	this.object.position.z = z;
 }
 
-target(x, y, z) {
+target(x, y, z) {	// Calculate vector to target
 	this.targetX = x;
 	this.targetY = y;
 	this.targetZ = z;

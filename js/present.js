@@ -12,7 +12,6 @@ constructor (posX = 1, posZ = 1) {
 	this.fallingSpeed = 0.023;
 
 	this.presentGroup = new THREE.Group();
-	//let presentColor = new THREE.Color(`hsl(${Math.floor(Math.random() * 360)}, 50%, 50%)`);
 
 	const colorArray = [
 			'chocolate'
@@ -25,30 +24,27 @@ constructor (posX = 1, posZ = 1) {
 
 	let colorError = 1;
 	let randomStripeColor = 0;
-	while (colorError) {
+	while (colorError) {	// Get a different color than the one randomized earlier
 		colorError = 0;
 		randomStripeColor = Math.floor(Math.random()*colorArray.length);
 		if (randomStripeColor == randomPresentColor) {
 			colorError = 1;
 		}
 	}
+
 	let presentColorStripe = new THREE.Color(colorArray[randomStripeColor]);
 
 	let presentGeometry = new THREE.BoxGeometry(0.9*this.randX, 0.9*this.randY, 0.9*this.randZ);
 	let presentMaterial = new THREE.MeshStandardMaterial({
 		color: presentColor
-		//transparent: true,
-		//opacity: 0.5
 	});
 	this.object = new THREE.Mesh(presentGeometry, presentMaterial);
 	
 
 	let wireframeGeo = new THREE.EdgesGeometry( presentGeometry );
 	let wireframeMat = new THREE.LineBasicMaterial( { 
-		color: presentColor.offsetHSL(0, 0, -0.15), 
+		color: presentColor.offsetHSL(0, 0, -0.15), 	// Slightly darker edges
 		linewidth: 1,
-		//opacity: 0.5,
-		//transparent: true
 		} );
 	let wireframe = new THREE.LineSegments( wireframeGeo, wireframeMat );
 	wireframe.renderOrder = 1; // make sure wireframes are rendered 2nd
@@ -181,7 +177,7 @@ setHeight() {
 
 addToScene() {
 
-		this.presentGroup.traverse( function( node ) {
+		this.presentGroup.traverse( function( node ) { // Make the whole object react with shadows
 
         	if ( node instanceof THREE.Mesh ) { node.castShadow = true; node.receiveShadow = true; }
 
