@@ -98,7 +98,7 @@ const main = (player1, player2) => {
 
 			let playertab = [player1, player2];
 
-			if (playertab[_player].hearts != oldHPTab[_player]) {
+			if (playertab[_player].hearts != oldHPTab[_player]) {	// Update only if changed
 
 				for (let i = 0; i < playertab[_player].hearts; i++) {
 					document.querySelector(`#P${_player+1}HP${i+1}`).style.visibility = "visible";
@@ -109,7 +109,7 @@ const main = (player1, player2) => {
 				oldHPTab[_player] = playertab[_player].hearts;
 			}
 
-			if (playertab[_player].ammunition != oldATab[_player]) {
+			if (playertab[_player].ammunition != oldATab[_player]) {	// Update only if changed
 
 				for (let i = 0; i < playertab[_player].ammunition; i++) {
 					document.querySelector(`#P${_player+1}A${i+1}`).style.visibility = "visible";
@@ -291,7 +291,6 @@ const main = (player1, player2) => {
 		// Floor
 			let floorGeometry = new THREE.PlaneGeometry(floorSideX,floorSideZ);
 			let floorMaterial = new THREE.MeshStandardMaterial({
-				//color: 'snow',
 				roughness: 1,
 				metalness: 0.6,
 				map: snowFloorTexture.texture
@@ -308,9 +307,6 @@ const main = (player1, player2) => {
 			// N
 				let wallNGeometry = new THREE.PlaneGeometry(floorSideX,wallHeight);
 				let wallNMaterial = new THREE.MeshStandardMaterial({
-					//color: 'snow', 
-					//opacity: 0.4,
-					//transparent: true,
 					map: wallXTexture.texture
 				});
 				let wallNPlane = new THREE.Mesh(wallNGeometry, wallNMaterial);
@@ -323,9 +319,6 @@ const main = (player1, player2) => {
 			// S
 				let wallSGeometry = new THREE.PlaneGeometry(floorSideX,wallHeight);
 				let wallSMaterial = new THREE.MeshStandardMaterial({
-					//color: 'snow', 
-					//opacity: 0.4,
-					//transparent: true
 					map: wallXTexture.texture
 				});
 				let wallSPlane = new THREE.Mesh(wallSGeometry, wallSMaterial);
@@ -339,9 +332,6 @@ const main = (player1, player2) => {
 			// E
 				let wallEGeometry = new THREE.PlaneGeometry(floorSideZ,wallHeight);
 				let wallEMaterial = new THREE.MeshStandardMaterial({
-					//color: 'snow', 
-					//opacity: 0.4, 
-					//transparent: true
 					map: wallZTexture.texture
 				});
 				let wallEPlane = new THREE.Mesh(wallEGeometry, wallEMaterial);
@@ -355,9 +345,6 @@ const main = (player1, player2) => {
 			// W
 				let wallWGeometry = new THREE.PlaneGeometry(floorSideZ,wallHeight);
 				let wallWMaterial = new THREE.MeshStandardMaterial({
-					//color: 'snow', 
-					//opacity: 0.4,
-					//transparent: true
 					map: wallZTexture.texture
 				});
 				let wallWPlane = new THREE.Mesh(wallWGeometry, wallWMaterial);
@@ -540,22 +527,23 @@ const main = (player1, player2) => {
 			if (currentPresents < maxPresents && animateStatus) {
 			let presentChance = 0;
 
-				       if (currentPresents <  (maxPresents/3)) {
+				       if (currentPresents <  (maxPresents/3)) {      // When less than 1/3 of presents
 
-					presentChance = Math.floor((Math.random()*3)/2);
+					presentChance = Math.floor((Math.random()*3)/2);  // floor(0-1.5), that makes it 66% for 0
 
-				} else if (currentPresents <  (maxPresents/2)) {
+				} else if (currentPresents <  (maxPresents/2)) {	  // When less than half of presents
 
-					presentChance = Math.floor(Math.random()*2);
+					presentChance = Math.floor(Math.random()*2); 	  // 50% for 0
 
-				} else  if (currentPresents <  (2 * maxPresents/3)){
+				} else  if (currentPresents <  (2 * maxPresents/3)){  // When less than 2/3 of presents
 
-					presentChance = Math.floor(Math.random()*5);
+					presentChance = Math.floor(Math.random()*5);      // 20% for 0
 
-				} else {
-					presentChance = Math.floor(Math.random()*10);
+				} else {											  // When more tha 2/3 of all presents
+					
+					presentChance = Math.floor(Math.random()*10);     // 10% for 0
 				}
-				if(!presentChance) {
+				if(!presentChance) {	// if presentChance == 0 -> spawn a present
 
 					let placementError = 0;
 					let playertab = [player1, player2];
@@ -702,7 +690,8 @@ const main = (player1, player2) => {
 		}
 	//
 
-	// Game over handlers
+	// GameOver handlers
+
 		const checkForWin = (_player1, _player2) => {
 
 			if (_player1.hearts <= 0 || _player2.hearts <= 0) {
@@ -888,11 +877,10 @@ const main = (player1, player2) => {
 				}
 
 			}, 1);
-
 		}
 	//
 
-	// Animate
+	// Animate (honestly it's a disaster but it works just perfectly fine)
 		let animateTimeoutHelper = 1;
 		const animate = () => {
 
@@ -994,7 +982,7 @@ const main = (player1, player2) => {
 }
 
 
-// 'Menu', will be updated in the future
+// 'Menu', will likely be updated in the future
 	let enterErr = false;
 	const menuFunc = () => {
 		let infoScreenGeo = new THREE.PlaneGeometry(8, 6);
