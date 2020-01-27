@@ -1,4 +1,4 @@
-Game made in THREE.js by me.
+Game made in THREE.js by me
 
 ~~~
 All models and textures belong to their owners!
@@ -15,3 +15,6 @@ Snow golem model by Vincent Yanez: https://sketchfab.com/3d-models/minecraft-sno
 Creeper model by Vincent Yanez: https://sketchfab.com/3d-models/minecraft-creeper-fd66182f07e5408eb04fa5a88ae16055
 
 Snow and stone texture: minecraft
+
+~
+Szymon Krawczyk 2019
