@@ -1,3 +1,8 @@
+//
+//  Created by Szymon Krawczyk 2019
+//
+
+
 // Height and width in 16:8 ratio
 	let myWidth  = window.innerWidth;
 	let myHeight = window.innerHeight;
@@ -27,6 +32,7 @@ scene.add(myAbientLight);
 		const floorSideZ = 20;
 		const wallHeight = 4;
 //
+
 
 // Automatic height and width in 16:8 ratio
 	const resize = () => {
@@ -983,8 +989,22 @@ const main = (player1, player2) => {
 
 
 // 'Menu', will likely be updated in the future
+
 	let enterErr = false;
 	const menuFunc = () => {
+
+		document.querySelector("#gameTitle").style.visibility = "visible";
+		let intervalhelp = true;
+		setInterval(function(){
+			if (intervalhelp) {
+				intervalhelp = false;
+				document.querySelector("#gameTitle").style.transform = "scale(1.1) translate(-45%, -45%)";
+			} else {
+				intervalhelp = true;
+				document.querySelector("#gameTitle").style.transform = "scale(1.0) translate(-50%, -50%)";
+			}
+		}, 600);
+
 		let infoScreenGeo = new THREE.PlaneGeometry(8, 6);
 		let infoScreenMat = new THREE.MeshBasicMaterial({				
 			map: sterText.texture
@@ -1007,6 +1027,7 @@ const main = (player1, player2) => {
 
 		const doIStartNow = () => {
 			if (event.keyCode == 13 && !enterErr) {		// ENTER
+					document.querySelector("#gameTitle").style.display = "none";
 			        console.log(`Game is starting!`);
 			        enterErr = true;
 					scene.remove(infoScreen);

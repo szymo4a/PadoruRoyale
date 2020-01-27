@@ -1,3 +1,8 @@
+/*
+    Created by Szymon Krawczyk 2019
+*/
+
+
 ::-webkit-scrollbar {
   display: none;
 }
@@ -9,7 +14,8 @@ body {
 
 
 	
-canvas {	/* https://css-tricks.com/quick-css-trick-how-to-center-an-object-exactly-in-the-center/ */
+canvas {	
+	/* https://css-tricks.com/quick-css-trick-how-to-center-an-object-exactly-in-the-center/ */
 	z-index: -10;
   	position: absolute;
   	top: 50%;
@@ -82,12 +88,58 @@ canvas {	/* https://css-tricks.com/quick-css-trick-how-to-center-an-object-exact
 	background-color: rgba(211,211,211 ,0.95);
 }
 
+
+#gameTitle {
+		position: absolute; 
+  		transform: translate(-50%, -50%);
+		margin: auto; 
+		z-index: 1100; 
+		text-align: center; 
+		top: 8%; 
+		visibility: hidden;
+		color: snow;
+		left: 50%; 
+		font-size: 130px; 
+		text-align: center;
+		width: 950px;
+		height: 70px;
+		line-height: 70px;
+		transition-timing-function: ease;
+		font-family: Calibri, sans-serif;  
+		padding: 40px;
+		transition: 900ms;
+		cursor: default;
+		text-shadow: black 4px 0px 0px, black 1.75517px 0.95885px 0px, black 1.0806px 1.68294px 0px, black 0.14147px 1.99499px 0px, black -0.83229px 1.81859px 0px, black -1.60229px 1.19694px 0px, black -1.97998px 0.28224px 0px, black -1.87291px -0.70157px 0px, black -1.30729px -1.5136px 0px, black -0.42159px -1.95506px 0px, black 0.56732px -1.91785px 0px, black 1.41734px -1.41108px 0px, black 1.92034px -0.55883px 0px;
+}
+
+#authorInfo {
+		position: fixed; 
+		background-color: rgba(255, 250, 240, 0.7);
+		z-index: 1200; 
+		border-left: 3px solid black;
+		border-top: 3px solid black;
+		border-top-left-radius: 10px;
+		text-align: center; 
+		bottom: 0%; 
+		color: snow;
+		right: 0%; 
+		font-size: 32px; 
+		text-align: center;
+		width: 280px;
+		height: 35px;
+		line-height: 35px;
+		font-family: Calibri, sans-serif;  
+		padding: 10px;
+		cursor: default;
+		text-shadow: black 2px 0px 0px, black 1.75517px 0.95885px 0px, black 1.0806px 1.68294px 0px, black 0.14147px 1.99499px 0px, black -0.83229px 1.81859px 0px, black -1.60229px 1.19694px 0px, black -1.97998px 0.28224px 0px, black -1.87291px -0.70157px 0px, black -1.30729px -1.5136px 0px, black -0.42159px -1.95506px 0px, black 0.56732px -1.91785px 0px, black 1.41734px -1.41108px 0px, black 1.92034px -0.55883px 0px;
+}
+
 .playerInfo {
 	position: absolute;
 	width: 250px;
 	height: 150px;
 	//background-color: rgba(255, 250, 240, 0.4);
-	background-color: rgba(100, 100, 100, 0.4);
+	background-color: rgba(100, 100, 100, 0.3);
 	padding: 10px;
 	visibility: hidden;
 	overflow: hidden;

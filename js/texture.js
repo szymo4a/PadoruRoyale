@@ -1,3 +1,6 @@
+//
+//  Created by Szymon Krawczyk 2019
+//
 
 class MyTexture {
 
