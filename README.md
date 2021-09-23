@@ -1,5 +1,8 @@
 Game made in THREE.js by me
 
+Please, go to https://github.com/SzymonKrawczyk/PadoruRoyale
+(project moved)
+
 ~~~
 All models and textures belong to their owners!
 ~~~
